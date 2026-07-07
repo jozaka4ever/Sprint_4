@@ -72,29 +72,27 @@ class TestBooksCollector:
         assert book_name not in collector.get_books_for_children()
 
     def test_add_book_in_favorites_existing_book_book_added(self, collector):
-        collector.add_new_book('Ведьмак')
-        collector.add_book_in_favorites('Ведьмак')
+    collector.add_new_book('Ведьмак')
+    collector.add_book_in_favorites('Ведьмак')
 
-        assert 'Ведьмак' in collector.get_list_of_favorites_books()
+    assert collector.get_list_of_favorites_books() == ['Ведьмак']
 
-    def test_delete_book_from_favorites_existing_favorite_book_book_deleted(self, collector):
-        collector.add_new_book('Ведьмак')
-        collector.add_book_in_favorites('Ведьмак')
-        collector.delete_book_from_favorites('Ведьмак')
+def test_delete_book_from_favorites_existing_favorite_book_book_deleted(self, collector):
+    collector.add_new_book('Ведьмак')
+    collector.add_book_in_favorites('Ведьмак')
+    collector.delete_book_from_favorites('Ведьмак')
 
-        assert 'Ведьмак' not in collector.get_list_of_favorites_books()
+    assert 'Ведьмак' not in collector.get_list_of_favorites_books()
 
-    def test_get_list_of_favorites_books_returns_favorites_books(self, collector):
-        collector.add_new_book('Ведьмак')
-        collector.add_book_in_favorites('Ведьмак')
+def test_get_list_of_favorites_books_returns_favorites_books(self, collector):
+    collector.add_new_book('Ведьмак')
+    collector.add_book_in_favorites('Ведьмак')
 
-        assert collector.get_list_of_favorites_books() == ['Ведьмак']
+    assert collector.get_list_of_favorites_books() == ['Ведьмак']
 
-    def test_add_book_in_favorites_same_book_twice_book_added_once(self, collector):
-        collector.add_new_book('Ведьмак')
-        collector.add_book_in_favorites('Ведьмак')
-        collector.add_book_in_favorites('Ведьмак')
+def test_add_book_in_favorites_same_book_twice_book_added_once(self, collector):
+    collector.add_new_book('Ведьмак')
+    collector.add_book_in_favorites('Ведьмак')
+    collector.add_book_in_favorites('Ведьмак')
 
-        assert collector.get_list_of_favorites_books() == ['Ведьмак']
-        collector.add_book_in_favorites('Ведьмак')
-        assert len(collector.get_list_of_favorites_books()) == 1
+    assert collector.get_list_of_favorites_books() == ['Ведьмак']
